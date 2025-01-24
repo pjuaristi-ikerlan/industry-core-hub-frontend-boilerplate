@@ -4,13 +4,21 @@
 
 The Industry Core Hub is an plug-and-play application that allows use cases to build their logic without needing to undertand in detail how the basic dataspace components (EDC, Digital Twin Registry, Submodel Server) work.
 
-This application is built taking into consideration the best practices and standards of Catena-X Industry Core and Dataspace experts. It aims to create a real speedway for use cases. Allowing applications to be developed in less than two weeks. 
+This application is built taking into consideration the best practices and standards of Catena-X Industry Core and Dataspace experts. It aims to create a real speedway for use cases. Allowing applications to be developed in less than two weeks.
 
 ## Objectives
 
 - reduce the complexity of the Eclipse Tractus-X Adoption
 - create an stable, scalable and easy to use backend SDK for the use case applications.
 - enable the 1.000 users goal of Catena-X for 2025.
+
+## High Level Architecture
+
+![High Level Architecture](./docs/architecture/media/Abstraction%20Levels.drawio.svg)
+
+## The Catena-X Speedway
+
+![Tractus-X Speedway](./docs/architecture/media/catena-x-speedway.svg)
 
 ## How to Get Involved
 
