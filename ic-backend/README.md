@@ -28,7 +28,7 @@ Welcome to the Eclipse Tractus-X Industry Software Development KIT! This SDK is 
 ## Folder Structure
 
 ```
-industry-sdk/
+ic-backend/
     ├── config
     ├── managers
     ├── models

@@ -29,16 +29,12 @@ Welcome to the Eclipse Tractus-X Dataspace Software Development KIT! This SDK is
 
 ```
 dataspace-sdk/
-    ├── docs
-    ├── scripts
-    ├── examples
-    ├── src
-        ├── config
-        ├── managers
-        ├── models
-        ├── services
-        ├── tests
-        ├── tools
+    ├── config
+    ├── managers
+    ├── models
+    ├── services
+    ├── tests
+    ├── tools
 ```
 
 ## Install in your local environment
