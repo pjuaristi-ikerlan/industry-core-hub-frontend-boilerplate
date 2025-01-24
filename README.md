@@ -1,30 +1,22 @@
-# Architecture Special Interest Group
+# Industry Core Hub
 
 ## Overview
 
-This is the Special Interest Group for Architecture (industry-core-hub) within the Eclipse Tractus-X project. Our primary aim is to document the overall architecture from Tractus-X. Also this repository is a place were Tractus-X Architects can align and document the different design decisions that affect the Tractus-X Product as a whole. 
+The Industry Core Hub is an plug-and-play application that allows use cases to build their logic without needing to undertand in detail how the basic dataspace components (EDC, Digital Twin Registry, Submodel Server) work.
+
+This application is built taking into consideration the best practices and standards of Catena-X Industry Core and Dataspace experts. It aims to create a real speedway for use cases. Allowing applications to be developed in less than two weeks. 
 
 ## Objectives
 
-- define architecture guidelines for Eclipse Tractus-X Products
-- document the architecture and how all the products come together as a whole
-- document the design decisions of the project itself, regarding other dataspaces and organizations
-- document the relationships in between products, aligning and keep things running in between the dependencies
-- enable a fluid and synchronized integration of the Eclipse Tractus-X Dataspace, having a big picture how it comes together.
-- easy the understanding for external technical viewers who want to learn how Tractus-X has been built from architectural point of view.
+- reduce the complexity of the Eclipse Tractus-X Adoption
+- create an stable, scalable and easy to use backend SDK for the use case applications.
+- enable the 1.000 users goal of Catena-X for 2025.
 
 ## How to Get Involved
 
 - **Get onboarded**: [Getting started](https://eclipse-tractusx.github.io/docs/oss/getting-started/). Join the Eclipse Tractus-X open source community as a contributor!
-- Use your official [Architecture Feature Request](./.github/ISSUE_TEMPLATE/architecture-feature-request.md) template to document your business case, issue or enhancement. 
 - Attend the [official community office hours](https://eclipse-tractusx.github.io/community/open-meetings/#Community%20Office%20Hour) and raise your issue!
 
-
-## Direct Involvement for Specific Security Topics
-
-### Do you want to propose a design decision?
-
-🚀 You can also use our official [Architecture Feature Request](./.github/ISSUE_TEMPLATE/architecture-feature-request.md) and please detail as most as possible your feature, so you can help us understand it to decide on it.
 
 ### Found a bug?
 
