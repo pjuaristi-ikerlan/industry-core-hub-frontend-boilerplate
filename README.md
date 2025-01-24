@@ -12,6 +12,64 @@ This application is built taking into consideration the best practices and stand
 - create an stable, scalable and easy to use backend SDK for the use case applications.
 - enable the 1.000 users goal of Catena-X for 2025.
 
+## Component Organization
+
+```mermaid
+flowchart TD
+    subgraph Tractus-X Backend Libraries
+    B[/tx_industry_sdk/]-- Uses -->  A[/tx_dataspace_sdk/]
+    end
+    subgraph Tractus-X Frontend Library
+    portal-shared-components
+    end
+    subgraph Industry Core Hub
+    ic-backend -- Uses --> B[/tx_industry_sdk/]
+    ic-frontend -- Uses --> portal-shared-components
+    ic-frontend -- Consumes APIs --> ic-backend
+    end
+```
+
+Designed for scalability and fast adoption
+
+## Possible Adoption Ways
+
+Here is an example of how this application can be adopted from various use cases
+
+```mermaid
+
+flowchart TD
+    subgraph Tractus-X Backend Libraries
+    B[/tx_industry_sdk/]-- Uses -->  A[/tx_dataspace_sdk/]
+    end
+    subgraph Tractus-X Frontend Library
+    portal-shared-components
+    end
+    subgraph Industry Core Hub
+    ic-backend -- Uses --> B[/tx_industry_sdk/]
+    ic-frontend -- Uses --> portal-shared-components
+    ic-frontend -- Consumes APIs --> ic-backend
+    end
+    subgraph Use Case App A
+    appa-backend -- Consumer APIs --> A[/tx_dataspace_sdk/]
+    end
+    subgraph Use Case App B
+    aapb-backend -- Consumer APIs --> B[/tx_industry_sdk/]
+    end
+    subgraph Use Case App C
+    aapc-frontend -- Consumer APIs --> ic-backend 
+    end
+    subgraph Use Case App D
+    appd-backend -- Uses Code --> A[/tx_dataspace_sdk/]
+    end
+    subgraph Use Case App F
+    appf-backend -- Uses Code --> B[/tx_industry_sdk/]
+    end
+    subgraph Use Case App G
+    appg-backend -- Uses Code --> ic-backend
+    end
+
+```
+
 ## High Level Architecture
 
 ![High Level Architecture](./docs/architecture/media/Abstraction%20Levels.drawio.svg)
