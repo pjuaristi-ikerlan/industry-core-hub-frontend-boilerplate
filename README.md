@@ -70,6 +70,44 @@ flowchart TD
 
 ```
 
+## Tractus-X Microservices for Dataspace, Industry & Industry Core Use Case
+
+```mermaid
+
+flowchart TD
+    subgraph Tractus-X Backend Libraries
+    B[/tx_industry_sdk/]-- Uses -->  A[/tx_dataspace_sdk/]
+    A[/tx_dataspace_sdk/] -- HAS --> DFM{{Dataspace Foundation Microservices}}
+    B[/tx_industry_sdk/] -- HAS --> IFM{{Industry Foundation Microservices}}
+    IFM{{Industry Foundation Microservices}} -- Uses --> B[/tx_industry_sdk/]
+    DFM{{Dataspace Foundation Microservices}} -- Uses --> A[/tx_dataspace_sdk/]
+    end
+    subgraph Industry Core Hub
+    ic-backend -- Uses --> B[/tx_industry_sdk/]
+    ic-frontend -- Consumes APIs --> ic-backend
+    ICM{{Industry Core Use Case Microservices}} -- Uses --> ic-backend
+    ic-backend -- HAS --> ICM{{Industry Core Use Case Microservices}}
+    end
+    subgraph Use Case App A
+    appa-backend -- Consumer APIs --> DFM{{Dataspace Foundation Microservices}}
+    end
+    subgraph Use Case App B
+    aapb-backend -- Consumer APIs --> IFM{{Industry Foundation Microservices}}
+    end
+    subgraph Use Case App C
+    aapc-frontend -- Consumer APIs --> ICM{{Industry Core Use Case Microservices}}
+    end
+    subgraph Use Case App D
+    appd-backend -- Uses Code --> A[/tx_dataspace_sdk/]
+    end
+    subgraph Use Case App F
+    appf-backend -- Uses Code --> B[/tx_industry_sdk/]
+    end
+    subgraph Use Case App G
+    appg-backend -- Uses Code --> ic-backend
+    end
+```
+
 ## High Level Architecture
 
 ![High Level Architecture](./docs/architecture/media/Abstraction%20Levels.drawio.svg)
