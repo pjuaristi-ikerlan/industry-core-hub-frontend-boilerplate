@@ -21,9 +21,9 @@ SPDX-License-Identifier: CC-BY-4.0
     Revised by an human committer
 -->
 
-# Eclipse Tractus-X Industry Software Development KIT (SDK)
+# Eclipse Tractus-X Industry Core Hub Backend
 
-Welcome to the Eclipse Tractus-X Industry Software Development KIT! This SDK is designed to provide a comprehensive set of tools and services for handling the basic components from the Tractus-X dataspace. Using this SDK you will be able to embed into your application the logic for handling the Digital Twin Registry (DTR) and the Submodel Server.  Below is an overview of the folder structure and the purpose of each directory.
+Welcome to the Eclipse Tractus-X Industry Core Hub Backend, here you will find the microservices that implement the logic from the Industry Code KIT.
 
 ## Folder Structure
 
