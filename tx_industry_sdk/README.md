@@ -44,8 +44,19 @@ industry-sdk/
 3. Import the SDK like this:
 
 ```python
-   from tx_dataspace_sdk.tools import op
+   from tx_industry_sdk.services import aasService
 ```
+
+## Run it in your local environment
+
+1. Install requirements:
+
+`pip install -r requirements.txt`
+
+2. Run the script:
+
+```py main.py --host 0.0.0.0 --port 8000```
+
 
 ### docs/
 This directory contains documentation files, including user guides, API references, and other relevant documentation to help you understand and use the SDK effectively.

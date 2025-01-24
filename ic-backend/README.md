@@ -37,15 +37,15 @@ ic-backend/
     ├── tools
 ```
 
-## Install in your local environment
+## Run it in your local environment
 
-1. Run `pip install -e .`
-2. It will install the SDK in your local environment
-3. Import the SDK like this:
+1. Install requirements:
 
-```python
-   from tx_dataspace_sdk.tools import op
-```
+`pip install -r requirements.txt`
+
+2. Run the script:
+
+```py main.py --host 0.0.0.0 --port 8000```
 
 ### docs/
 This directory contains documentation files, including user guides, API references, and other relevant documentation to help you understand and use the SDK effectively.
