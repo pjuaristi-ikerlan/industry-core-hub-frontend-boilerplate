@@ -1,5 +1,5 @@
 #################################################################################
-# Eclipse Tractus-X - Dataspace SDK
+# Eclipse Tractus-X - Software Development KIT
 #
 # Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
