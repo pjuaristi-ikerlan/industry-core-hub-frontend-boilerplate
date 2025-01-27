@@ -44,9 +44,9 @@ sys.path.append(str(Path(__file__).resolve().parents[2]))
 sys.dont_write_bytecode = True
 
 ## Import Library Packeges
-from tractusx_sdk.dataspace.tools import op
-from tractusx_sdk.dataspace.tools import httpTools
-from tractusx_sdk.dataspace.managers import authManager
+from tractusx_sdk.shared.tools import op
+from tractusx_sdk.shared.tools import httpTools
+from tractusx_sdk.shared.managers import authManager
 from tractusx_sdk.dataspace.services import edcService
 from tractusx_sdk.industry.services import aasService
 

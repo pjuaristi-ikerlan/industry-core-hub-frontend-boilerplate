@@ -29,7 +29,6 @@
 import copy
 import logging
 logger = logging.getLogger('staging')
-from tractusx_sdk.dataspace.tools import op
 from fastapi import Request
 
 class authManager:

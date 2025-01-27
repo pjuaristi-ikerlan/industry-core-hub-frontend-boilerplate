@@ -44,10 +44,10 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from tractusx_sdk.dataspace.managers import authManager
+from tractusx_sdk.shared.managers import authManager
 from tractusx_sdk.dataspace.services import edcService
-from tractusx_sdk.dataspace.tools import op
-from tractusx_sdk.dataspace.tools import httpTools
+from tractusx_sdk.shared.tools import op
+from tractusx_sdk.shared.tools import httpTools
 ## Declare Global Variables
 app_configuration:dict
 log_config:dict
