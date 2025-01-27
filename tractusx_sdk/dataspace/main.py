@@ -42,12 +42,12 @@ from fastapi_keycloak_middleware import get_user
 
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from tx_dataspace_sdk.managers import authManager
-from tx_dataspace_sdk.services import edcService
-from tx_dataspace_sdk.tools import op
-from tx_dataspace_sdk.tools import httpTools
+from tractusx_sdk.dataspace.managers import authManager
+from tractusx_sdk.dataspace.services import edcService
+from tractusx_sdk.dataspace.tools import op
+from tractusx_sdk.dataspace.tools import httpTools
 ## Declare Global Variables
 app_configuration:dict
 log_config:dict

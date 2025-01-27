@@ -40,15 +40,15 @@ from fastapi_keycloak_middleware import CheckPermissions
 from fastapi_keycloak_middleware import get_user
 
 ## Import paths
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+sys.path.append(str(Path(__file__).resolve().parents[2]))
 sys.dont_write_bytecode = True
 
 ## Import Library Packeges
-from tx_dataspace_sdk.tools import op
-from tx_dataspace_sdk.tools import httpTools
-from tx_dataspace_sdk.managers import authManager
-from tx_dataspace_sdk.services import edcService
-from tx_industry_sdk.services import aasService
+from tractusx_sdk.dataspace.tools import op
+from tractusx_sdk.dataspace.tools import httpTools
+from tractusx_sdk.dataspace.managers import authManager
+from tractusx_sdk.dataspace.services import edcService
+from tractusx_sdk.industry.services import aasService
 
 ## Declare Global Variables
 app_configuration:dict
