@@ -120,7 +120,7 @@ def get_arguments():
     
     parser.add_argument("--debug", default=False, action="store_false", help="Enable and disable the debug", required=False)
     
-    parser.add_argument("--port", default=7000, help="The server port where it will be available", type=int, required=False,)
+    parser.add_argument("--port", default=8080, help="The server port where it will be available", type=int, required=False,)
     
     parser.add_argument("--host", default="localhost", help="The server host where it will be available", type=str, required=False)
     
