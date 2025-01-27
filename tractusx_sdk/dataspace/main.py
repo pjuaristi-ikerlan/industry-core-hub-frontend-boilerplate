@@ -21,17 +21,7 @@
 #################################################################################
 
 
-from datetime import datetime
-import sys
-# Set up imports configuration
-import argparse
-import logging.config
-import logging
-import yaml
-import uvicorn
-import urllib3
-
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 
 ## FAST API example for keycloak
 from fastapi_keycloak_middleware import CheckPermissions
@@ -39,9 +29,16 @@ from fastapi_keycloak_middleware import get_user
 
 ## Import Library Packeges
 
-
+import sys
+import argparse
+from logging import config
+import logging
+import yaml
+import uvicorn
+import urllib3
+urllib3.disable_warnings()
+logging.captureWarnings(True)
 from pathlib import Path
-
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from tractusx_sdk.shared.managers import authManager
@@ -51,35 +48,25 @@ from tractusx_sdk.shared.tools import httpTools
 ## Declare Global Variables
 app_configuration:dict
 log_config:dict
+app = FastAPI(title="main")
 
 ## In memory storage/management services
 edc_service: edcService
-
-urllib3.disable_warnings()
-logging.captureWarnings(True)
-
 ## Create Loggin Folder
 op.make_dir("logs")
-
 # Load the logging config file
 with open('./config/logging.yml', 'rt') as f:
     # Read the yaml configuration
     log_config = yaml.safe_load(f.read())
-    # Set logging filename with datetime
-    date = op.get_filedate()
-    op.make_dir(dir_name="logs/"+date)
-    log_config["handlers"]["file"]["filename"] = f'logs/{date}/{op.get_filedatetime()}-dataspace-sdk.log'
-    logging.config.dictConfig(log_config)
+    current_date = op.get_filedate()
+    op.make_dir(dir_name="logs/"+current_date)
+    log_config["handlers"]["file"]["filename"] = f'logs/{current_date}/{op.get_filedatetime()}-dataspace-sdk.log'
+    config.dictConfig(log_config)
 
 # Load the configuation for the application
 with open('./config/configuration.yml', 'rt') as f:
     # Read the yaml configuration
     app_configuration = yaml.safe_load(f.read())
-    
-# Add the previous folder structure to the system path to import the utilities
-sys.path.append("../")
-
-app = FastAPI(title="main")
 
 @app.get("/example")
 async def api_call(request: Request):
@@ -108,7 +95,7 @@ async def api_call(request: Request):
             message="It was not possible to execute the request!"
         )
 
-def init_app(host:str, port:int, log_level:str="info"):
+def start(host:str, port:int, log_level:str="info"):
     ## Load in memory data storages 
     global edc_service
     
@@ -120,23 +107,14 @@ def init_app(host:str, port:int, log_level:str="info"):
     uvicorn.run(app, host=host, port=port, log_level=log_level)       
     
 def get_arguments():
-    """
-    Commandline argument handling. Return the populated namespace.
-
-    Returns:
-        args: :func:`parser.parse_args`
-    """
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("--port", default=9000, \
-                        help="The server port where it will be available", required=False, type=int)
+    parser.add_argument("--debug", default=False, action="store_false", help="Enable and disable the debug", required=False)
     
-    parser.add_argument("--host", default="localhost", \
-                        help="The server host where it will be available", required=False, type=str)
+    parser.add_argument("--port", default=9000, help="The server port where it will be available", type=int, required=False,)
     
-    parser.add_argument("--debug", default=False, action="store_false", \
-                    help="Enable and disable the debug", required=False)
+    parser.add_argument("--host", default="localhost", help="The server host where it will be available", type=str, required=False)
     
     args = parser.parse_args()
     return args
@@ -163,6 +141,6 @@ if __name__ == "__main__":
         logger = logging.getLogger('development')
 
     # Init application
-    init_app(host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))
+    start(host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))
 
     print("\nClosing the application... Thank you for using the Eclipse Tractus-X Dataspace SDK!")

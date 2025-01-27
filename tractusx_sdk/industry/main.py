@@ -108,7 +108,7 @@ async def api_call(request: Request):
             message="It was not possible to execute the request!"
         )
 
-def init_app(host:str, port:int, log_level:str="info"):
+def start(host:str, port:int, log_level:str="info"):
     ## Load in memory data storages 
     global edc_service
     
@@ -120,23 +120,14 @@ def init_app(host:str, port:int, log_level:str="info"):
     uvicorn.run(app, host=host, port=port, log_level=log_level)       
     
 def get_arguments():
-    """
-    Commandline argument handling. Return the populated namespace.
-
-    Returns:
-        args: :func:`parser.parse_args`
-    """
     
     parser = argparse.ArgumentParser()
+        
+    parser.add_argument("--debug", default=False, action="store_false", help="Enable and disable the debug", required=False)
     
-    parser.add_argument("--port", default=7000, \
-                        help="The server port where it will be available", required=False, type=int)
+    parser.add_argument("--port", default=7000, help="The server port where it will be available", type=int, required=False,)
     
-    parser.add_argument("--host", default="localhost", \
-                        help="The server host where it will be available", required=False, type=str)
-    
-    parser.add_argument("--debug", default=False, action="store_false", \
-                    help="Enable and disable the debug", required=False)
+    parser.add_argument("--host", default="localhost", help="The server host where it will be available", type=str, required=False)
     
     args = parser.parse_args()
     return args
@@ -155,14 +146,11 @@ if __name__ == "__main__":
 
     print("Application starting, listening to requests...\n")
 
-    # Initialize the server environment and get the comand line arguments
     args = get_arguments()
-    # Configure the logging confiuration depending on the configuration stated
     logger = logging.getLogger('staging')
     if(args.debug):
         logger = logging.getLogger('development')
-
-    # Init application
-    init_app(host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))
+        
+    start(host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))
 
     print("\nClosing the application... Thank you for using the Eclipse Tractus-X Industry SDK!")
