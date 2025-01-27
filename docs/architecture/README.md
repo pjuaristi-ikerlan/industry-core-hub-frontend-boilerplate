@@ -1,7 +1,6 @@
 <!--
-#######################################################################
 
-Eclipse Tractus-X Industy Core Hub 
+Eclipse Tractus-X - Industry Core Hub Hub
 
 Copyright (c) 2025 Contributors to the Eclipse Foundation
 
@@ -15,7 +14,6 @@ https://creativecommons.org/licenses/by/4.0/legalcode.
 
 SPDX-License-Identifier: CC-BY-4.0
 
-#######################################################################
 -->
 
 <div align="center"> 
