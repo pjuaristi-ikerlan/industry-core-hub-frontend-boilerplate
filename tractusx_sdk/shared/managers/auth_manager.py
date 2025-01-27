@@ -26,15 +26,9 @@
 ## License: Apache License, Version 2.0
 ## Source: https://github.com/eclipse-tractusx/digital-product-pass/blob/main/dpp-verification/simple-wallet/utilities/httpUtils.py
 
-import copy
-import logging
-logger = logging.getLogger('staging')
 from fastapi import Request
 
 class authManager:
-    """
-    Class responsible for managing the authentication and authorization of requests.
-    """
     api_key: str
     api_key_header: str
     auth_enabled: bool

@@ -57,7 +57,7 @@ edc_service: edcService
 urllib3.disable_warnings()
 logging.captureWarnings(True)
 
-## Create Loggin Folder
+## Create Logging Folder
 op.make_dir("logs")
 
 # Load the logging config file
