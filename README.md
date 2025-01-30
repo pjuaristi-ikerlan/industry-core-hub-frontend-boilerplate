@@ -14,8 +14,9 @@ An application that allows you to provide and consumer data from your partners u
 - reduce the complexity of the Eclipse Tractus-X Adoption.
 - create an stable, scalable and easy to use backend SDK for the use case applications.
 - enable the 1.000 users goal of Catena-X for 2025.
-- give a simple and re-usable application for Small and Medium Companies that want to adopt the dataspace.
+- give a simple and re-usable application for Small and Medium Companies that want to adopt the dataspace with data provision and consumption.
 - allow new applications to be build over a stable foundation of a dataspace.
+- create a technical foundation for technical enablement services to be used in a easy way.
 
 ## Component Organization
 
