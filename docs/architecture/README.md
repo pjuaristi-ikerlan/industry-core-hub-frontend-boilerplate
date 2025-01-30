@@ -127,7 +127,7 @@ An EDC and DTR service should be part of the application, but it should also be 
 
 ## Name
 
-- TODO: Why Industry Core X?
+Industry Core Hub - A plug and play application that allows you to manage your data and infrastructure. Provide and consume data according to the industry core standards, and build your open source and business use cases as fast as possible, with a powerful motor.
 
 ## Objectives
 
