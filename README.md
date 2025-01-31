@@ -10,12 +10,12 @@ An application that allows you to provide and consumer data from your partners u
 
 ## Roadmap
 ```
-February 3 2025          R25.06             R25.09              R25.12
-    Kickoff               MVP                Stable              NEXT              2026 -> Beyond
-       | ----------------> | ----------------> | ----------------> |  ----------------> | 
-                 Data Provision         Data Consumption         IC-HUB         + KIT Use Cases
-                    Orchestrator          Orchestrator           + Integrate First
-                                                                    Use Case DPP 
+February 3 2025          R25.06             R25.09          R25.12
+    Kickoff               MVP                Stable          NEXT              2026 -> Beyond
+       | ----------------> | ----------------> | -----------> |  ----------------> | 
+                 Data Provision         Data Consumption    IC-HUB         + KIT Use Cases
+                  Orchestrator            Orchestrator        + Integrate First
+                                                                Use Case (e.g. DPP) 
 ```
 
 ## Objectives
