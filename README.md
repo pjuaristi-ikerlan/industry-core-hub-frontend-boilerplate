@@ -8,6 +8,14 @@ This application is built taking into consideration the best practices and stand
 
 An application that allows you to provide and consumer data from your partners using the Catena-X Dataspace. This open source solution can be integrated into your business applications, open source applications and many other components.
 
+## Roadmap
+```
+February 3 2025        R25.06              R25.09             R25.12
+    Kickoff             MVP                Stable              NEXT                2026 -> Beyond
+       | --------------> | ----------------> | ---------------> |  --------------------> | 
+                   Data Provision      Data Consumption       IC-HUB                   + KIT Use Cases
+                    Orchestrator         Orchestrator           + First Use Case DPP 
+```
 
 ## Objectives
 
