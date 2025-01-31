@@ -2,11 +2,13 @@
 
 ## Overview
 
-The Industry Core Hub is an plug-and-play application that allows use cases to build their logic without needing to undertand in detail how the basic dataspace components (EDC, Digital Twin Registry, Submodel Server) work.
+The Industry Core Hub is an plug-and-play application that allows use cases to build their logic without needing to undertand in detail how the basic dataspace components (EDC, AAS/Digital Twin Registry, Submodel Server/Any Data Source) work.
 
 This application is built taking into consideration the best practices and standards of Catena-X Industry Core and Dataspace experts. It aims to create a real speedway for use cases. Allowing applications to be developed in less than two weeks.
 
-An application that allows you to provide and consumer data from your partners using the Catena-X Dataspace. This open source solution can be integrated into your business applications, open source applications and many other components.
+An application that allows you to provide and consumer data from your partners using the Catena-X Dataspace. This open source solution can be integrated into your business applications, open source applications and many other components. 
+
+Building on a strong, scalable and fundamented foundation by Experts, and with the aim of reducing the complexity of a dataspace for the external constumer, like SMEs that want to be compatible with Catena-X, Factory-X, and many other dataspaces.
 
 ## Roadmap
 ```
