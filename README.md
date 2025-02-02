@@ -28,6 +28,7 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 - give a simple and re-usable application for Small and Medium Companies that want to adopt the dataspace with data provision and consumption.
 - allow new applications to be build over a stable foundation of a dataspace.
 - create a technical foundation for technical enablement services to be used in a easy way.
+- create a industry core stack
 
 ## Component Organization
 
