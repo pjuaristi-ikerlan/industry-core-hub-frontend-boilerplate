@@ -126,6 +126,10 @@ flowchart TD
     end
 ```
 
+## Frontend
+
+![forntend mock](./docs/architecture/media/Frontend_Mock_Industry_Core.png)
+
 ## High Level Architecture
 
 ![High Level Architecture](./docs/architecture/media/Abstraction%20Levels.drawio.svg)
