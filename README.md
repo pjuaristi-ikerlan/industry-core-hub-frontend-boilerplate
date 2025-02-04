@@ -52,6 +52,10 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 - create a technical foundation for technical enablement services to be used in a easy way.
 - create a industry core stack
 
+## Building Blocks (with stack)
+
+![building blocks](./docs/media/BuildingBlocks.png)
+
 ## Component Organization
 
 ```mermaid
