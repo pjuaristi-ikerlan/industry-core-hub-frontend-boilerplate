@@ -1,8 +1,30 @@
 # Industry Core Hub
 
+<p align="center">
+  <img src="./docs/media/IndustryCoreHubLogo.png" alt="Industry Core Logo" width="250"/>
+</p>
+
+
+A lightweight, **plug and play data provision & consumption orchestrator** of the:
+
+- [Tractus-X Eclipse Dataspace Connector (EDC)](https://github.com/eclipse-tractusx/tractusx-edc)
+- [Tractus-X Digital Twin Registry](https://github.com/eclipse-tractusx/sldt-digital-twin-registry)
+- [Simple Data Backend](https://github.com/eclipse-tractusx/tractus-x-umbrella/tree/main/simple-data-backend)
+
+It gives you the **DATASPACE KICKSTART** you need to adopt the Tractus-X Technology Stack, once you are onboarded to the operative data space.
+
+**Additional Services**:
+
+- Discovery Services:
+  - [Discovery Finder](https://github.com/eclipse-tractusx/sldt-discovery-finder)  
+  - [BPN Discovery](https://github.com/eclipse-tractusx/sldt-bpn-discovery)
+  - [EDC Discovery](https://github.com/eclipse-tractusx/portal-backend)
+  
+- [Portal IAM/IDP](https://github.com/eclipse-tractusx/portal-iam)
+
 ## Overview
 
-The Industry Core Hub is an plug-and-play application that allows use cases to build their logic without needing to undertand in detail how the basic dataspace components (EDC, AAS/Digital Twin Registry, Submodel Server/Any Data Source) work.
+The Industry Core Hub is an plug-and-play application that allows use cases to build their logic without needing to understand in detail how the basic dataspace components (EDC, AAS/Digital Twin Registry, Submodel Server/Any Data Source) work.
 
 This application is built taking into consideration the best practices and standards of Catena-X Industry Core and Dataspace experts. It aims to create a real speedway for use cases. Allowing applications to be developed in less than two weeks.
 
