@@ -70,10 +70,8 @@ class op:
 
     @ staticmethod
     def make_dir(dir_name, permits=0o777) -> bool:
-        if op.path_exists(dir_name):
-            return True
-        os.makedirs(dir_name, permits)
-        return True
+        if not op.path_exists(dir_name):
+            os.makedirs(dir_name, permits)
     
     @ staticmethod
     def delete_dir(dir_name):
