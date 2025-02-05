@@ -54,6 +54,9 @@ log_config:dict
 ## In memory storage/management services
 edc_service: edcService
 
+## In memory authentication manager service
+auth_manager: authManager
+
 urllib3.disable_warnings()
 logging.captureWarnings(True)
 
@@ -86,7 +89,7 @@ async def api_call(request: Request):
     """
     try:
         ## Check if the api key is present and if it is authenticated
-        if(not authManager.is_authenticated(request=request)):
+        if(not auth_manager.is_authenticated(request=request)):
             return httpTools.get_not_authorized()
         ## Standard way to know if user is calling or the EDC.
         calling_bpn = request.headers.get('Edc-Bpn', None)
@@ -104,11 +107,14 @@ async def api_call(request: Request):
         )
 
 def start(host:str, port:int, log_level:str="info"):
-    ## Load in memory data storages 
-    global edc_service
+    ## Load in memory data storages and authentication manager
+    global edc_service, auth_manager
     
     ## Start storage and edc communication service
     edc_service = edcService()
+
+    ## Start the authentication manager
+    auth_manager = authManager()
     
     ## Once initial checks and configurations are done here is the place where it shall be included
     logger.info("[INIT] Application Startup Initialization Completed!")
