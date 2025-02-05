@@ -9,4 +9,5 @@ The following people (in alphabetical order) have [contributed to this repositor
 | Mathias Brunkow Moser | Architect & Technical Lead | Eclipse Tractus-X Project Lead & Chief Software Architect | Catena-X Automotive Network e.V. | [@matbmoser](https://github.com/matbmoser) |
 | Mikel Garcia Bartolome | Full-Stack Engineer | | LKS Next - Spain | [@mgarciaLKS](https://github.com/mgarciaLKS) |
 | Michael Scholz | Architect | Software Technology Architect | DRÄXLMAIER Group | [@sm29105](https://github.com/sm29105) |
+| Patxi Juaristi Pagegi | Full-Stack Engineer | Cloud Computing Researcher | Ikerlan | [@pjuaristi-ikerlan](https://github.com/pjuaristi-ikerlan) |
 |
