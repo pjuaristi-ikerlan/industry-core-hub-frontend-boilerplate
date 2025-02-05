@@ -89,8 +89,8 @@ class op:
 
     @ staticmethod
     def to_string(file_path, openmode:str="r", encoding=sys.stdout.encoding):
-        str = open(file_path, openmode, encoding=encoding).read()
-        return str
+        string = open(file_path, openmode, encoding=encoding).read()
+        return string
     
     @ staticmethod
     def load_file(file_path) -> io.BytesIO:
