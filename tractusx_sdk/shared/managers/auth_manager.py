@@ -28,7 +28,7 @@
 
 from fastapi import Request
 
-class authManager:
+class AuthManager:
     api_key: str
     api_key_header: str
     auth_enabled: bool

@@ -41,10 +41,10 @@ logging.captureWarnings(True)
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from tractusx_sdk.shared.managers import authManager
-from tractusx_sdk.dataspace.services import edcService
+from tractusx_sdk.shared.managers import AuthManager
+from tractusx_sdk.dataspace.services import EdcService
 from tractusx_sdk.shared.tools import op
-from tractusx_sdk.shared.tools import httpTools
+from tractusx_sdk.shared.tools import HttpTools
 
 ## Declare Global Variables
 app_configuration:dict
@@ -52,10 +52,10 @@ log_config:dict
 app = FastAPI(title="main")
 
 ## In memory authentication manager service
-auth_manager: authManager
+auth_manager: AuthManager
 
 ## In memory storage/management services
-edc_service: edcService
+edc_service: EdcService
 ## Create Loggin Folder
 op.make_dir("logs")
 # Load the logging config file
@@ -83,7 +83,7 @@ async def api_call(request: Request):
     try:
         ## Check if the api key is present and if it is authenticated
         if(not auth_manager.is_authenticated(request=request)):
-            return httpTools.get_not_authorized()
+            return HttpTools.get_not_authorized()
         ## Standard way to know if user is calling or the EDC.
         calling_bpn = request.headers.get('Edc-Bpn', None)
         if(calling_bpn is not None):
@@ -94,7 +94,7 @@ async def api_call(request: Request):
     
     except Exception as e:
         logger.exception(str(e))
-        return httpTools.get_error_response(
+        return HttpTools.get_error_response(
             status=500,
             message="It was not possible to execute the request!"
         )
@@ -104,10 +104,10 @@ def start(host:str, port:int, log_level:str="info"):
     global edc_service, auth_manager
     
     ## Start storage and edc communication service
-    edc_service = edcService()
+    edc_service = EdcService()
 
     ## Start the authentication manager
-    auth_manager = authManager()
+    auth_manager = AuthManager()
     
     ## Once initial checks and configurations are done here is the place where it shall be included
     logger.info("[INIT] Application Startup Initialization Completed!")

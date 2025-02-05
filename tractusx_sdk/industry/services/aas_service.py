@@ -20,6 +20,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #################################################################################
 
-class aasService:
+class AasService:
     def __init__(self):
         pass
