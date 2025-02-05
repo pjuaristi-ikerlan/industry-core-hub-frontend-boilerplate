@@ -160,20 +160,3 @@ class op:
         tmp_ret=sourceObject
         return tmp_ret
     
-    @staticmethod
-    def search_element_by_field(array, id, field="id"):
-        return next((x for x in array if x[field] == id), None)
-    
-    @staticmethod
-    def get_future_timestamp(minutes=0, zone=timezone.utc):
-        future_time = datetime.now(zone) + timedelta(minutes=minutes)
-        return future_time.timestamp()
-    
-    @staticmethod
-    def is_interval_reached(end_timestamp:int, zone=timezone.utc) -> bool:
-        current_timestamp = datetime.timestamp(datetime.now(zone))
-        return end_timestamp <= current_timestamp
-
-    @staticmethod
-    def timestamp_to_datetime(timestamp:int, zone=timezone.utc, format:str="%d.%m.%Y %H:%M:%S.%f"):
-        return datetime.fromtimestamp(timestamp, zone).strftime(format)
