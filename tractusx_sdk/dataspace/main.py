@@ -41,7 +41,7 @@ logging.captureWarnings(True)
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from tractusx_sdk.shared.managers import authManager
+from tractusx_sdk.shared.managers import AuthManager
 from tractusx_sdk.dataspace.services import edcService
 from tractusx_sdk.shared.tools import op
 from tractusx_sdk.shared.tools import httpTools
@@ -52,7 +52,7 @@ log_config:dict
 app = FastAPI(title="main")
 
 ## In memory authentication manager service
-auth_manager: authManager
+auth_manager: AuthManager
 
 ## In memory storage/management services
 edc_service: edcService
@@ -101,17 +101,23 @@ async def api_call(request: Request):
 
 def start(host:str, port:int, log_level:str="info"):
     ## Load in memory data storages and authentication manager
-    global edc_service, auth_manager
+    global edc_service, auth_manager, logger
     
+    # Initialize the server environment and get the comand line arguments
+    args = get_arguments()
+    # Configure the logging confiuration depending on the configuration stated
+    logger = logging.getLogger('staging')
+    if(args.debug):
+        logger = logging.getLogger('development')
     ## Start storage and edc communication service
     edc_service = edcService()
 
     ## Start the authentication manager
-    auth_manager = authManager()
+    auth_manager = AuthManager()
     
     ## Once initial checks and configurations are done here is the place where it shall be included
     logger.info("[INIT] Application Startup Initialization Completed!")
-    uvicorn.run(app, host=host, port=port, log_level=log_level)       
+    uvicorn.run(app, host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))       
     
 def get_arguments():
     
@@ -140,14 +146,7 @@ if __name__ == "__main__":
 
     print("Application starting, listening to requests...\n")
 
-    # Initialize the server environment and get the comand line arguments
-    args = get_arguments()
-    # Configure the logging confiuration depending on the configuration stated
-    logger = logging.getLogger('staging')
-    if(args.debug):
-        logger = logging.getLogger('development')
-
     # Init application
-    start(host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))
+    start()
 
     print("\nClosing the application... Thank you for using the Eclipse Tractus-X Dataspace SDK!")
