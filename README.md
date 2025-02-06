@@ -56,6 +56,12 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 
 ![building blocks](./docs/media/BuildingBlocks.png)
 
+## Technologies
+
+- **Backend**: Python, FAST API
+- **Frontend**: React.js, Portal Shared Components, Material UI
+
+
 ## Component Organization
 
 ```mermaid
