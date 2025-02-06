@@ -106,7 +106,10 @@ def start():
     ## Load in memory data storages and authentication manager
     global edc_service, auth_manager, logger
     
+    # Initialize the server environment and get the comand line arguments
     args = get_arguments()
+
+    # Configure the logging confiuration depending on the configuration stated
     logger = logging.getLogger('staging')
     if(args.debug):
         logger = logging.getLogger('development')
@@ -119,7 +122,7 @@ def start():
     
     ## Once initial checks and configurations are done here is the place where it shall be included
     logger.info("[INIT] Application Startup Initialization Completed!")
-    uvicorn.run(app, host=host, port=port, log_level=log_level)       
+    uvicorn.run(app, host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))        
     
 def get_arguments():
     

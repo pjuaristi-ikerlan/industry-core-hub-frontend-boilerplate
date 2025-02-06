@@ -56,8 +56,10 @@ auth_manager: AuthManager
 
 ## In memory storage/management services
 edc_service: EdcService
+
 ## Create Loggin Folder
 op.make_dir("logs")
+
 # Load the logging config file
 with open('./config/logging.yml', 'rt') as f:
     # Read the yaml configuration
@@ -84,6 +86,7 @@ async def api_call(request: Request):
         ## Check if the api key is present and if it is authenticated
         if(not auth_manager.is_authenticated(request=request)):
             return HttpTools.get_not_authorized()
+        
         ## Standard way to know if user is calling or the EDC.
         calling_bpn = request.headers.get('Edc-Bpn', None)
         if(calling_bpn is not None):
@@ -99,16 +102,18 @@ async def api_call(request: Request):
             message="It was not possible to execute the request!"
         )
 
-def start(host:str, port:int, log_level:str="info"):
+def start():
     ## Load in memory data storages and authentication manager
     global edc_service, auth_manager, logger
     
     # Initialize the server environment and get the comand line arguments
     args = get_arguments()
+
     # Configure the logging confiuration depending on the configuration stated
     logger = logging.getLogger('staging')
     if(args.debug):
         logger = logging.getLogger('development')
+
     ## Start storage and edc communication service
     edc_service = EdcService()
 
