@@ -36,7 +36,7 @@ import urllib.parse
 import collections
 
 logger = logging.getLogger('staging')
-class httpTools:
+class HttpTools:
 
     # do get request without session
     def do_get(url,verify=False,headers=None,timeout=None,params=None,allow_redirects=False):
@@ -77,7 +77,7 @@ class httpTools:
     
     @staticmethod
     def get_host(url):
-        return httpTools.explode_url(url=url).netloc
+        return HttpTools.explode_url(url=url).netloc
     
     @staticmethod 
     def explode_url(url):
@@ -105,7 +105,7 @@ class httpTools:
     # Generates a error response with message
     @staticmethod
     def get_error_response(status=500,message="It was not possible to process/execute this request!"):
-        return httpTools.response({
+        return HttpTools.response({
             "message": message,
             "status": status 
         }, status)
@@ -116,7 +116,7 @@ class httpTools:
     
     @staticmethod
     def get_not_authorized():
-        return httpTools.response({
+        return HttpTools.response({
             "message": "Not Authorized",
             "status": 401
         }, 401)

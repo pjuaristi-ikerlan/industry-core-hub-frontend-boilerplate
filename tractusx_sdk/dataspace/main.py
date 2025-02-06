@@ -42,9 +42,9 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from tractusx_sdk.shared.managers import AuthManager
-from tractusx_sdk.dataspace.services import edcService
+from tractusx_sdk.dataspace.services import EdcService
 from tractusx_sdk.shared.tools import op
-from tractusx_sdk.shared.tools import httpTools
+from tractusx_sdk.shared.tools import HttpTools
 
 ## Declare Global Variables
 app_configuration:dict
@@ -55,9 +55,11 @@ app = FastAPI(title="main")
 auth_manager: AuthManager
 
 ## In memory storage/management services
-edc_service: edcService
+edc_service: EdcService
+
 ## Create Loggin Folder
 op.make_dir("logs")
+
 # Load the logging config file
 with open('./config/logging.yml', 'rt') as f:
     # Read the yaml configuration
@@ -83,7 +85,8 @@ async def api_call(request: Request):
     try:
         ## Check if the api key is present and if it is authenticated
         if(not auth_manager.is_authenticated(request=request)):
-            return httpTools.get_not_authorized()
+            return HttpTools.get_not_authorized()
+        
         ## Standard way to know if user is calling or the EDC.
         calling_bpn = request.headers.get('Edc-Bpn', None)
         if(calling_bpn is not None):
@@ -94,23 +97,25 @@ async def api_call(request: Request):
     
     except Exception as e:
         logger.exception(str(e))
-        return httpTools.get_error_response(
+        return HttpTools.get_error_response(
             status=500,
             message="It was not possible to execute the request!"
         )
 
-def start(host:str, port:int, log_level:str="info"):
+def start():
     ## Load in memory data storages and authentication manager
     global edc_service, auth_manager, logger
     
     # Initialize the server environment and get the comand line arguments
     args = get_arguments()
+
     # Configure the logging confiuration depending on the configuration stated
     logger = logging.getLogger('staging')
     if(args.debug):
         logger = logging.getLogger('development')
+
     ## Start storage and edc communication service
-    edc_service = edcService()
+    edc_service = EdcService()
 
     ## Start the authentication manager
     auth_manager = AuthManager()
