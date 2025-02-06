@@ -140,19 +140,19 @@ class op:
         return time.sleep(seconds)
     
     @staticmethod
-    def get_attribute(source_object,attr_path:str,default_value=None,path_sep:str="."):
+    def get_attribute(source_object:str,attr_path:str,default_value=None,path_sep:str="."):
         tmp_ret=default_value
-        if source_object == None:
+        if source_object is None:
             return tmp_ret
     
         if path_sep == None or path_sep == "":
             return tmp_ret
     
         tmp_parts=attr_path.split(path_sep)
-        if tmp_parts == None or tmp_parts == "":
+        if tmp_parts is None or tmp_parts == [""]:
             return tmp_ret
         for part in tmp_parts:
-            if not part in source_object:
+            if part not in source_object:
                 return tmp_ret
             source_object=source_object[part]
         tmp_ret=source_object
