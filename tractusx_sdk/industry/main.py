@@ -113,8 +113,13 @@ async def api_call(request: Request):
 
 def start(host:str, port:int, log_level:str="info"):
     ## Load in memory data storages and authentication manager
-    global edc_service, auth_manager
+    global edc_service, auth_manager, logger
     
+    args = get_arguments()
+    logger = logging.getLogger('staging')
+    if(args.debug):
+        logger = logging.getLogger('development')
+        
     ## Start storage and edc communication service
     edc_service = EdcService()
 
@@ -123,7 +128,7 @@ def start(host:str, port:int, log_level:str="info"):
     
     ## Once initial checks and configurations are done here is the place where it shall be included
     logger.info("[INIT] Application Startup Initialization Completed!")
-    uvicorn.run(app, host=host, port=port, log_level=log_level)       
+    uvicorn.run(app, host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))           
     
 def get_arguments():
     
@@ -151,12 +156,7 @@ if __name__ == "__main__":
         "\n\n\t\t\t\t\t\t\t\t\t\tv0.0.1")
 
     print("Application starting, listening to requests...\n")
-
-    args = get_arguments()
-    logger = logging.getLogger('staging')
-    if(args.debug):
-        logger = logging.getLogger('development')
         
-    start(host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))
+    start()
 
     print("\nClosing the application... Thank you for using the Eclipse Tractus-X Industry SDK!")
