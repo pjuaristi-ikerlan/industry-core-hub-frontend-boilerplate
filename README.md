@@ -5,7 +5,7 @@
 </p>
 
 
-A lightweight, **plug and play data provision & consumption orchestrator** of the:
+A decentral lightweight, **plug and play data provision & consumption orchestrator** of the:
 
 - [Tractus-X Eclipse Dataspace Connector (EDC)](https://github.com/eclipse-tractusx/tractusx-edc)
 - [Tractus-X Digital Twin Registry](https://github.com/eclipse-tractusx/sldt-digital-twin-registry)
