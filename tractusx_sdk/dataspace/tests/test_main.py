@@ -21,10 +21,7 @@
 #################################################################################
 
 import pytest
-import importlib
 from fastapi.testclient import TestClient
-from unittest.mock import AsyncMock, patch
-from tractusx_sdk.shared.managers.auth_manager import AuthManager
 from tractusx_sdk.dataspace import main
 
 # Set test_mode to True before running tests to skip uvicorn.run
@@ -38,14 +35,17 @@ def client():
     main.start()
     return TestClient(main.app)
 
-@pytest.fixture
-def mock_auth_manager():
-    """Mock the authentication manager."""
-    with patch("tractusx_sdk.shared.managers.auth_.is_authenticated", new_callable=AsyncMock, return_value=True) as mock_auth:
-        yield mock_auth
-
 def test_api_call_success(client):
-    """Test API call with successful authentication."""
+    """
+    Test API call with successful authentication.
+
+    Args:
+        client: A test client instance used to simulate HTTP requests.
+
+    Assertions:
+        - The response status code must be 200.
+        - The response JSON must be None.
+    """
     response = client.get("/example")
-    assert response.status_code == 200
+    assert (200 == response.status_code)
     assert response.json() is None
