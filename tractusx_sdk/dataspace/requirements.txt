@@ -6,3 +6,4 @@ pydantic==2.6.3
 pydantic-core==2.16.3
 sqlmodel==0.0.22
 pytest==8.1.1
+httpx==0.23.1
