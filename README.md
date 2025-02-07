@@ -51,6 +51,7 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 - allow new applications to be build over a stable foundation of a dataspace.
 - create a technical foundation for technical enablement services to be used in a easy way.
 - create a industry core stack
+- have the posibility to create compatible "Use Case  or KIT Add-on" which can be extended as needed, and could be "selled" in the cx-marketplace as a "ready to use box". 
 
 ## Building Blocks (with stack)
 
