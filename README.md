@@ -5,7 +5,7 @@
 </p>
 
 
-A lightweight, **plug and play data provision & consumption orchestrator** of the:
+A decentral lightweight, **plug and play data provision & consumption orchestrator** of the:
 
 - [Tractus-X Eclipse Dataspace Connector (EDC)](https://github.com/eclipse-tractusx/tractusx-edc)
 - [Tractus-X Digital Twin Registry](https://github.com/eclipse-tractusx/sldt-digital-twin-registry)
@@ -55,6 +55,12 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 ## Building Blocks (with stack)
 
 ![building blocks](./docs/media/BuildingBlocks.png)
+
+## Technologies
+
+- **Backend**: Python, FAST API
+- **Frontend**: React.js, Portal Shared Components, Material UI
+
 
 ## Component Organization
 

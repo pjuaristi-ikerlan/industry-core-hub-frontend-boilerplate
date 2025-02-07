@@ -45,7 +45,7 @@ dataspace-sdk/
 4. Import the SDK like this:
 
 ```python
-   from tx_dataspace_sdk.services import edcService
+   from tx_dataspace_sdk.services import EdcService
 ```
 
 ## Run it in your local environment

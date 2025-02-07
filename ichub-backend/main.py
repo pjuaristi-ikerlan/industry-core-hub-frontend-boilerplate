@@ -41,17 +41,17 @@ sys.dont_write_bytecode = True
 
 ## Import Library Packeges
 from tractusx_sdk.shared.tools import op
-from tractusx_sdk.shared.tools import httpTools
+from tractusx_sdk.shared.tools import HttpTools
 from tractusx_sdk.shared.managers import AuthManager
-from tractusx_sdk.dataspace.services import edcService
-from tractusx_sdk.industry.services import aasService
+from tractusx_sdk.dataspace.services import EdcService
+from tractusx_sdk.industry.services import AasService
 
 ## Declare Global Variables
 app_configuration:dict
 log_config:dict
 
 ## In memory storage/management services
-edc_service: edcService
+edc_service: EdcService
 
 ## In memory authentication manager service
 auth_manager: AuthManager
@@ -89,7 +89,7 @@ async def api_call(request: Request):
     try:
         ## Check if the api key is present and if it is authenticated
         if(not auth_manager.is_authenticated(request=request)):
-            return httpTools.get_not_authorized()
+            return HttpTools.get_not_authorized()
         ## Standard way to know if user is calling or the EDC.
         
         ## DO LOGIC HERE!!!
@@ -97,7 +97,7 @@ async def api_call(request: Request):
     
     except Exception as e:
         logger.exception(str(e))
-        return httpTools.get_error_response(
+        return HttpTools.get_error_response(
             status=500,
             message="It was not possible to execute the request!"
         )
@@ -106,20 +106,23 @@ def start():
     ## Load in memory data storages and authentication manager
     global edc_service, auth_manager, logger
     
+    # Initialize the server environment and get the comand line arguments
     args = get_arguments()
+
+    # Configure the logging confiuration depending on the configuration stated
     logger = logging.getLogger('staging')
     if(args.debug):
         logger = logging.getLogger('development')
     
     ## Start storage and edc communication service
-    edc_service = edcService()
+    edc_service = EdcService()
 
     ## Start the authentication manager
     auth_manager = AuthManager()
     
     ## Once initial checks and configurations are done here is the place where it shall be included
     logger.info("[INIT] Application Startup Initialization Completed!")
-    uvicorn.run(app, host=host, port=port, log_level=log_level)       
+    uvicorn.run(app, host=args.host, port=args.port, log_level=("debug" if args.debug else "info"))        
     
 def get_arguments():
     
