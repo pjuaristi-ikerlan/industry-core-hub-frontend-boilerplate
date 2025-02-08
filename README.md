@@ -53,7 +53,7 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 - allow new applications to be build over a stable foundation of a dataspace.
 - create a technical foundation for technical enablement services to be used in a easy way.
 - create a industry core stack
-- have the posibility to create compatible "Use Case  or KIT Add-on" which can be extended as needed, and could be "selled" in the cx-marketplace as a "ready to use box". 
+- have the posibility to create compatible "Use Case  or KIT Add-on" which can be extended as needed, and could be "selled" in the cx-marketplace as a "ready to use box".
 
 ## Building Blocks (with stack)
 
@@ -163,7 +163,13 @@ flowchart TD
 
 ## Frontend
 
-![forntend mock](./docs/architecture/media/Frontend_Mock_Industry_Core.png)
+![frontend mock](./docs/architecture/media/Frontend_Mock_Industry_Core.png)
+
+## Infinite Add-ons Extensions
+
+Proving the same "motor" of implementation for infinite add-ons of use cases that can build over the industry core standards. We provide the "technology" enablement, so you can orchestrate your use case in the best way, providing personalized views for your "Data Models" and also features for your use cases which were not originally included in the "open source" development, allowing you to sell specific extention views and features in the Catena-X marketplace.
+
+![frontend-add-ons](./docs/media/FrontendArchitecture.png)
 
 ## High Level Architecture
 
