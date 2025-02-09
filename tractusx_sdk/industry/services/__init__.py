@@ -24,4 +24,4 @@
 __author__ = 'Eclipse Tractus-X Contributors'
 __license__ = "Apache License, Version 2.0"
 
-from .aas_service import aasService
+from .aas_service import AasService

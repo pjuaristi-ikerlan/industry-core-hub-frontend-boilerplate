@@ -5,7 +5,7 @@
 </p>
 
 
-A lightweight, **plug and play data provision & consumption orchestrator** of the:
+A decentral lightweight, **plug and play data provision & consumption orchestrator** of the:
 
 - [Tractus-X Eclipse Dataspace Connector (EDC)](https://github.com/eclipse-tractusx/tractusx-edc)
 - [Tractus-X Digital Twin Registry](https://github.com/eclipse-tractusx/sldt-digital-twin-registry)
@@ -21,6 +21,8 @@ It gives you the **DATASPACE KICKSTART** you need to adopt the Tractus-X Technol
   - [EDC Discovery](https://github.com/eclipse-tractusx/portal-backend)
   
 - [Portal IAM/IDP](https://github.com/eclipse-tractusx/portal-iam)
+
+It also will allow you to extend the "frontend", "backend" and Tractus-X sdks to support different use cases. Allowing you to create "ready to use" KIT toolboxes with personalized visualization for every Standard Catena-X Data Model. 
 
 ## Overview
 
@@ -51,10 +53,17 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 - allow new applications to be build over a stable foundation of a dataspace.
 - create a technical foundation for technical enablement services to be used in a easy way.
 - create a industry core stack
+- have the posibility to create compatible "Use Case  or KIT Add-on" which can be extended as needed, and could be "selled" in the cx-marketplace as a "ready to use box".
 
 ## Building Blocks (with stack)
 
 ![building blocks](./docs/media/BuildingBlocks.png)
+
+## Technologies
+
+- **Backend**: Python, FAST API
+- **Frontend**: React.js, Portal Shared Components, Material UI
+
 
 ## Component Organization
 
@@ -154,7 +163,13 @@ flowchart TD
 
 ## Frontend
 
-![forntend mock](./docs/architecture/media/Frontend_Mock_Industry_Core.png)
+![frontend mock](./docs/architecture/media/Frontend_Mock_Industry_Core.png)
+
+## Infinite Add-ons Extensions
+
+Proving the same "motor" of implementation for infinite add-ons of use cases that can build over the industry core standards. We provide the "technology" enablement, so you can orchestrate your use case in the best way, providing personalized views for your "Data Models" and also features for your use cases which were not originally included in the "open source" development, allowing you to sell specific extention views and features in the Catena-X marketplace.
+
+![frontend-add-ons](./docs/media/FrontendArchitecture.png)
 
 ## High Level Architecture
 
