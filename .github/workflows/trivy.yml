@@ -34,7 +34,7 @@ env:
 
 jobs:
   analyze-ichub-backend:
-    name: Analyze
+    name: Analyze ICHub Backend
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -69,7 +69,7 @@ jobs:
           sarif_file: "trivy-results-ichub-backend.sarif"
 
   analyze-dataspace-sdk:
-    name: Analyze
+    name: Analyze Dataspace SDK
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -104,7 +104,7 @@ jobs:
           sarif_file: "trivy-results-dataspace-sdk.sarif"
 
   analyze-industry-sdk:
-    name: Analyze
+    name: Analyze Industry SDK
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -118,7 +118,7 @@ jobs:
       - name: Build industry-sdk Docker image
         id: build-docker-industry-sdk
         run: |
-            cd tractusx_sdk/dataspace
+            cd tractusx_sdk/industry
             docker build -t ${{ env.IMAGE_NAMESPACE }}/${{ env.INDUSTRY_SDK_IMAGE_NAME }}:latest .
 
       - name: Run Trivy vulnerability scanner
