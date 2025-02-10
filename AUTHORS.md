@@ -10,5 +10,6 @@ The following people (in alphabetical order) have [contributed to this repositor
 | Mikel Garcia Bartolome | Full-Stack Engineer | | LKS Next - Spain | [@mgarciaLKS](https://github.com/mgarciaLKS) |
 | Michael Scholz | Architect | Software Technology Architect | DRÄXLMAIER Group | [@sm29105](https://github.com/sm29105) |
 | Patxi Juaristi Pagegi | Full-Stack Engineer | Cloud Computing Researcher | Ikerlan | [@pjuaristi-ikerlan](https://github.com/pjuaristi-ikerlan) |
+| Alejandro Granizo Castro | Junior Full-Stack Engineer | Junior Backend Engineer | XITASO | [@alejandrogranizo](https://github.com/alejandrogranizo) |
 | Koichi Hokonohara | Full-Stack Engineer | Senior Researcher | Fujitsu Ltd | [@hokonohara](https://github.com/hokonohara) |
 |
