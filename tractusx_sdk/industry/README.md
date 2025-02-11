@@ -44,7 +44,7 @@ industry-sdk/
 3. Import the SDK like this:
 
 ```python
-   from tx_industry_sdk.services import aasService
+   from tx_industry_sdk.services import AasService
 ```
 
 ## Run it in your local environment
