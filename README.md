@@ -22,7 +22,7 @@ It gives you the **DATASPACE KICKSTART** you need to adopt the Tractus-X Technol
   
 - [Portal IAM/IDP](https://github.com/eclipse-tractusx/portal-iam)
 
-It also will allow you to extend the "frontend", "backend" and Tractus-X sdks to support different use cases. Allowing you to create "ready to use" KIT toolboxes with personalized visualization for every Standard Catena-X Data Model. 
+It also will allow you to extend the "frontend", "backend" and a [Tractus-X SDK](https://github.com/eclipse-tractusx/tractusx-sdk) to support different use cases. Allowing you to create "ready to use" KIT toolboxes with personalized visualization for every Standard Catena-X Data Model. 
 
 ## Overview
 
