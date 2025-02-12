@@ -8,5 +8,5 @@ cd ..
 cd industry
 pytest
 cd ..
-cd shared
+cd dataspace
 pytest

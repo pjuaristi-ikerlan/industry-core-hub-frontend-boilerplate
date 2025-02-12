@@ -41,10 +41,10 @@ logging.captureWarnings(True)
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from tractusx_sdk.shared.managers import AuthManager
+from tractusx_sdk.dataspace.managers import AuthManager
 from tractusx_sdk.dataspace.services import EdcService
-from tractusx_sdk.shared.tools import op
-from tractusx_sdk.shared.tools import HttpTools
+from tractusx_sdk.dataspace.tools import op
+from tractusx_sdk.dataspace.tools import HttpTools
 
 ## Declare Global Variables
 app_configuration:dict
