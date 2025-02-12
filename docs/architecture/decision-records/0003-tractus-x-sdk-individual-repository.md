@@ -18,7 +18,14 @@ The industry core hub will be the first "lighthouse" on how to use the Tractus-X
 
 ## Decision
 
-Separate the sdk into another repository. 
+Separate the tractusx-sdk into another repository.
+
+![Plug and Play Architecture](media/sdk-context.png)
+
+and here is the actual repository separation with the Modular Microservices Architecture
+
+![Diagram Architecture Repos](media/modular-microservices-architecture.svg)
+
 
 ## Consequences
 
