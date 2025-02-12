@@ -41,3 +41,11 @@ and here is the actual repository separation with the Modular Microservices Arch
 - EDC selection can be enabled
 - Code separated for stable releases and no confusion when the EDC changes, that nothing strange will happen.
 - Logic separeated from the Industry Core Hub, and better reusabilty for other producst .
+
+## NOTICE
+
+This work is licensed under the [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
+
+- SPDX-License-Identifier: CC-BY-4.0
+- SPDX-FileCopyrightText: 2025 Contributors to the Eclipse Foundation
+- Source URL: https://github.com/eclipse-tractusx/industry-core-hub
