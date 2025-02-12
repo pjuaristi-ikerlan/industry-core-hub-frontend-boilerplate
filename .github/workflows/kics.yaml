@@ -53,7 +53,7 @@ jobs:
         with:
           path: "." # Scanning directory .
           output_path: kicsResults/ # Output path for SARIF results
-          output_formats: "sarif" # Output format
+          output_formats: "json,sarif" # Output format
           # ignore_on_exit: results # Ignore the results and return exit status code 0 unless a KICS engine error happens
           fail_on: high # If you want your pipeline to fail only on high severity results and KICS engine execution errors
           # exclude_paths: "terraform/gcp/big_data.tf,terraform/azure" # Exclude paths or files from scan
