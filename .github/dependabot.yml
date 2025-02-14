@@ -1,0 +1,21 @@
+version: 2
+registries:
+  github-central-pipelines:
+    type: git
+    url: https://github.com
+    username: x-access-token
+    password: ${{ secrets.CENTRAL_PIPELINES_READ_ONLY_GH_TOKEN }}
+
+updates:
+  # Github Actions
+  -
+    package-ecosystem: "github-actions"
+    directory: /
+    labels:
+      - "dependabot"
+      - "github-actions"
+    schedule:
+      interval: "weekly"
+    groups:
+      dependencies:
+        dependency-type: "production"
