@@ -78,108 +78,15 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 - **Backend**: Python, FAST API
 - **Frontend**: React.js, Portal Shared Components, Material UI
 
+## Backend
 
-## Component Organization
-
-```mermaid
-flowchart TD
-    subgraph Tractus-X Backend Libraries
-    B[/tx_industry_sdk/]-- Uses -->  A[/tx_dataspace_sdk/]
-    end
-    subgraph Tractus-X Frontend Library
-    portal-shared-components
-    end
-    subgraph Industry Core Hub
-    ic-backend -- Uses --> B[/tx_industry_sdk/]
-    ic-frontend -- Uses --> portal-shared-components
-    ic-frontend -- Consumes APIs --> ic-backend
-    end
-```
-
-Designed for scalability and fast adoption
-
-## Possible Adoption Ways
-
-Here is an example of how this application can be adopted from various use cases
-
-```mermaid
-
-flowchart TD
-    subgraph Tractus-X Backend Libraries
-    B[/tx_industry_sdk/]-- Uses -->  A[/tx_dataspace_sdk/]
-    end
-    subgraph Tractus-X Frontend Library
-    portal-shared-components
-    end
-    subgraph Industry Core Hub
-    ic-backend -- Uses --> B[/tx_industry_sdk/]
-    ic-frontend -- Uses --> portal-shared-components
-    ic-frontend -- Consumes APIs --> ic-backend
-    end
-    subgraph Use Case App A
-    appa-backend -- Consumer APIs --> A[/tx_dataspace_sdk/]
-    end
-    subgraph Use Case App B
-    aapb-backend -- Consumer APIs --> B[/tx_industry_sdk/]
-    end
-    subgraph Use Case App C
-    aapc-frontend -- Consumer APIs --> ic-backend 
-    end
-    subgraph Use Case App D
-    appd-backend -- Uses Code --> A[/tx_dataspace_sdk/]
-    end
-    subgraph Use Case App F
-    appf-backend -- Uses Code --> B[/tx_industry_sdk/]
-    end
-    subgraph Use Case App G
-    appg-backend -- Uses Code --> ic-backend
-    end
-
-```
-
-## Tractus-X Microservices for Dataspace, Industry & Industry Core Use Case
-
-```mermaid
-
-flowchart TD
-    subgraph Tractus-X Backend Libraries
-    B[/tx_industry_sdk/]-- Uses -->  A[/tx_dataspace_sdk/]
-    A[/tx_dataspace_sdk/] -- HAS --> DFM{{Dataspace Foundation Microservices}}
-    B[/tx_industry_sdk/] -- HAS --> IFM{{Industry Foundation Microservices}}
-    IFM{{Industry Foundation Microservices}} -- Uses --> B[/tx_industry_sdk/]
-    DFM{{Dataspace Foundation Microservices}} -- Uses --> A[/tx_dataspace_sdk/]
-    end
-    subgraph Industry Core Hub
-    ic-backend -- Uses --> B[/tx_industry_sdk/]
-    ic-frontend -- Consumes APIs --> ic-backend
-    ICM{{Industry Core Use Case Microservices}} -- Uses --> ic-backend
-    ic-backend -- HAS --> ICM{{Industry Core Use Case Microservices}}
-    end
-    subgraph Use Case App A
-    appa-backend -- Consumer APIs --> DFM{{Dataspace Foundation Microservices}}
-    end
-    subgraph Use Case App B
-    aapb-backend -- Consumer APIs --> IFM{{Industry Foundation Microservices}}
-    end
-    subgraph Use Case App C
-    aapc-frontend -- Consumer APIs --> ICM{{Industry Core Use Case Microservices}}
-    end
-    subgraph Use Case App D
-    appd-backend -- Uses Code --> A[/tx_dataspace_sdk/]
-    end
-    subgraph Use Case App F
-    appf-backend -- Uses Code --> B[/tx_industry_sdk/]
-    end
-    subgraph Use Case App G
-    appg-backend -- Uses Code --> ic-backend
-    end
-```
+![backend architecture](./docs/architecture/media/BackendArchitecture.png)
 
 ## Frontend
 
 ![frontend mock](./docs/architecture/media/Frontend_Mock_Industry_Core.png)
 
-## Infinite Add-ons Extensions
+### Infinite Add-ons Extensions
 
 Proving the same "motor" of implementation for infinite add-ons of use cases that can build over the industry core standards. We provide the "technology" enablement, so you can orchestrate your use case in the best way, providing personalized views for your "Data Models" and also features for your use cases which were not originally included in the "open source" development, allowing you to sell specific extention views and features in the Catena-X marketplace.
 
