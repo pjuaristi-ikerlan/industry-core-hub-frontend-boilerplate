@@ -80,7 +80,7 @@ Kickoff              MVP                Stable          NEXT            2026 -> 
 
 ## Backend
 
-![backend architecture](./docs/architecture/media/BackendArchitecture.png)
+![backend architecture](./docs/media/BackendArchitecture.png)
 
 ## Frontend
 
