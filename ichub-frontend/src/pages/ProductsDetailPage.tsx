@@ -20,27 +20,12 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
-import './App.css'
+import ProductDetail from '../components/ProductDetail'
 
-import ProductsListPage from './pages/ProductsListPage';
-import ProductsDetailPage from './pages/ProductsDetailPage';
-import MainLayout from './layout/MainLayout';
-
-function App() {
-  
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path='/' element={<MainLayout />}>
-          <Route path="/" element={<ProductsListPage />} />
-          <Route path="/product/:id" element={<ProductsDetailPage />} />
-        </Route>
-      </>
-    )
-  );
-
-  return <RouterProvider router={router} />;
+const ProductsDetailPage = () => {
+  return (
+    <ProductDetail />
+  )
 }
 
-export default App
+export default ProductsDetailPage

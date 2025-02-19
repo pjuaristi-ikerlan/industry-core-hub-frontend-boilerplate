@@ -20,27 +20,25 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
-import './App.css'
+import { Outlet } from "react-router-dom";
 
-import ProductsListPage from './pages/ProductsListPage';
-import ProductsDetailPage from './pages/ProductsDetailPage';
-import MainLayout from './layout/MainLayout';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
 
-function App() {
-  
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path='/' element={<MainLayout />}>
-          <Route path="/" element={<ProductsListPage />} />
-          <Route path="/product/:id" element={<ProductsDetailPage />} />
-        </Route>
-      </>
-    )
+function MainLayout() {
+  return (
+    <main>
+      <Header />
+      <div className="pageWrapper d-lg-flex">
+        <aside className="sidebarArea shadow bg-white" id="sidebarArea">
+          <Sidebar />
+        </aside>
+        <div className="contentArea">
+          <Outlet />
+        </div>
+      </div>
+    </main>
   );
+};
 
-  return <RouterProvider router={router} />;
-}
-
-export default App
+export default MainLayout
