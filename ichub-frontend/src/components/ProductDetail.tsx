@@ -13,6 +13,7 @@ interface CarPart {
     WeightKg: number;
     Category: string;
     Description: string;
+    Image: string;
   }
 
 function ProductDetail() {
@@ -51,7 +52,7 @@ function ProductDetail() {
         <p><strong>Weight:</strong> {part.WeightKg} kg</p>
         <p><strong>Single Level Bom:</strong> {part.SingleLevelBom} kg</p>
         <p><strong>Description:</strong> {part.description} kg</p>
-        <img src="https://images.unsplash.com/photo-1517153295259-74eb0b416cee?auto=format&fit=crop&w=640&q=420" alt={part.Name} />
+        <img src={part.Image} alt={part.Name} />
         
         <Button color="success" size="large" onClick={() => console.log("Add button")}>
                 <Icon fontSize="16" iconName="Add" /> 

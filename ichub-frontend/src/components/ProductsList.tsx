@@ -14,6 +14,7 @@ interface CarPart {
   WeightKg: number;
   Category: string;
   Description: string;
+  Image: string;
 }
 
 function ProductsList() {
@@ -35,16 +36,10 @@ function ProductsList() {
           key: part.Name,
           title: part.Name,
           subtitle: part.Manufacturer,
-          description: (
-            <>
-                <p style={{margin: '0px'}}>Category: {part.Category}</p>
-                <p style={{margin: '0px'}}>Status: {part.Status}</p>
-                <p style={{margin: '0px'}}>Material: {part.Material}</p>
-                <p style={{margin: '0px'}}>Weight: {part.WeightKg} kg</p>
-            </>),
+          description: part.Description,
           image: {
             alt: part.Name,
-            src: "https://images.unsplash.com/photo-1517153295259-74eb0b416cee?auto=format&fit=crop&w=640&q=420"
+            src: part.Image
           },
           onButtonClick: () => handleButtonClick(part),
         }))}

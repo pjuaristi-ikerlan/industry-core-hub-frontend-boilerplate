@@ -8,29 +8,29 @@ const Sidebar = () => {
         {
           children: [
             {
-              href: '/1/1',
+              href: '/',
               title: 'Submenu Item 1'
             },
             {
-              href: '/1/2',
+              href: '/',
               title: 'Submenu Item 2'
             },
             {
               disable: true,
               hint: 'coming soon',
-              href: '/1/3',
+              href: '/',
               title: 'Submenu Item 3'
             }
           ],
-          href: '/1',
+          href: '/',
           title: 'Menu Item 1'
         },
         {
-          href: '/2',
+          href: '/',
           title: 'Menu Item 2'
         },
         {
-          href: '/3',
+          href: '/',
           title: 'Menu Item 3'
         }
       ]}
