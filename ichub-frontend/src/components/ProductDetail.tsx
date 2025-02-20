@@ -70,6 +70,23 @@ function ProductDetail() {
     URL.revokeObjectURL(url);
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: part.Name,
+          text: `Check out this part: ${part.Name} (UUID: ${part.uuid})`,
+          url: window.location.href
+        });
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      console.log("Web Share API not supported.");
+    }
+  };
+  
+
   const getStatusTag = (status: string) => {
     switch (status.toLowerCase()) {
       case "registered":
@@ -127,7 +144,7 @@ function ProductDetail() {
                     <Icon fontSize="16" iconName="FileDownload" /> 
                     Download
                 </Button>
-                <Button color="secondary" size="small" onClick={() => console.log("Share with partner")} className="share-dropdown-btn">
+                <Button color="secondary" size="small" onClick={handleShare} className="share-dropdown-btn">
                     <Icon fontSize="16" iconName="IosShare" /> 
                 Share with partner
                 </Button>
