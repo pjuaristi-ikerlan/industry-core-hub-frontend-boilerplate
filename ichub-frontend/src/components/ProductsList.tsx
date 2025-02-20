@@ -64,6 +64,7 @@ function ProductsList() {
             src: part.Image
           },
           onButtonClick: () => handleButtonClick(part),
+          boxClickable: true
         }))}
         variant="expanded"
       />
