@@ -25,16 +25,28 @@ import { useParams } from "react-router-dom";
 import carPartsData from "../data/sample-data.json";
 import { DropdownMenu, StatusTag, Button, Icon, Typography, PageNotifications } from '@catena-x/portal-shared-components';
 
+import JsonViewerDialog from "./JsonViewerDialog";
+
 
 function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const part = carPartsData.find((part) => part.uuid === id);
+
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   const [notification, setNotification] = React.useState<{ open: boolean; severity: "success" | "error"; title: string } | null>(null);
 
   if (!part) {
     return <div>Product not found</div>;
   }
+
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(part.uuid)
@@ -237,11 +249,13 @@ function ProductDetail() {
         </Button>
       </div>
       <div className="flex m-5">
-        <Button color="error" size="large" onClick={() => console.log("DCM v2.0 button")} fullWidth={true} style={{padding: "10px"}}>
+        <Button color="error" size="large" onClick={handleOpenDialog} fullWidth={true} style={{padding: "10px"}}>
             <Icon fontSize="16" iconName="Add" />
             Transmission Passport v5.0
         </Button>
       </div>
+
+      <JsonViewerDialog open={dialogOpen} onClose={handleCloseDialog} carJsonData={part}/>
     </div>
   );
 }
