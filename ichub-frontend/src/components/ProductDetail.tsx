@@ -57,6 +57,19 @@ function ProductDetail() {
       });
   };
 
+  const handleDownload = () => {
+    const fileName = part.Name.toLowerCase().replace(/\s+/g, "-") + ".txt";
+    const blob = new Blob([part.uuid], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   const getStatusTag = (status: string) => {
     switch (status.toLowerCase()) {
       case "registered":
@@ -110,7 +123,7 @@ function ProductDetail() {
                     <Icon fontSize="16" iconName="ContentCopy" /> 
                     Copy unique ID
                 </Button>
-                <Button color="secondary" size="small" onClick={() => console.log("Download")} className="share-dropdown-btn">
+                <Button color="secondary" size="small" onClick={handleDownload} className="share-dropdown-btn">
                     <Icon fontSize="16" iconName="FileDownload" /> 
                     Download
                 </Button>
@@ -159,7 +172,7 @@ function ProductDetail() {
         </div>
         <div className="my-auto">
           <img src={part.Image} alt={part.Name} className="img-fluid my-auto"/>
-          <div>
+          <div className="mt-3">
             <ul>
               <li className="flex">
                 <Icon fontSize="16" iconName="Polyline" className="my-auto mr-1"/>
