@@ -243,13 +243,13 @@ function ProductDetail() {
             <Icon fontSize="16" iconName="Add" />
             DPP v2.0
         </Button>
-        <Button color="primary" size="large" onClick={() => console.log("DCM v2.0 button")} fullWidth={true} style={{padding: "10px"}}>
+        <Button color="primary" size="large" onClick={handleOpenDialog} fullWidth={true} style={{padding: "10px"}}>
             <Icon fontSize="16" iconName="Add" />
             DCM v2.0
         </Button>
       </div>
       <div className="flex m-5">
-        <Button color="error" size="large" onClick={handleOpenDialog} fullWidth={true} style={{padding: "10px"}}>
+        <Button color="error" size="large" onClick={() => console.log("Transmission Passport v5.0")} fullWidth={true} style={{padding: "10px"}}>
             <Icon fontSize="16" iconName="Add" />
             Transmission Passport v5.0
         </Button>
