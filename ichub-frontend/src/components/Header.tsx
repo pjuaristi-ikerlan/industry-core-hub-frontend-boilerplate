@@ -46,7 +46,7 @@ const Header = () => {
     >
       <a href="/">
         <img
-          src="https://eclipse-tractusx.github.io/portal-shared-components/assets/cx-logo-text-DoATHErk.svg"
+          src="@/assets/IndustryCoreHubLogo.png"
           alt="Logo"
           style={{
             display: 'inline-block',
