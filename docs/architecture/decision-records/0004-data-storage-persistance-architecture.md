@@ -46,3 +46,12 @@ PostgreSQL will be used as database.
 
 - Clear relational model need to be created.
 - Requires a second "service" to be maintained and updated over the time, using postgresql will require us to do this maintainance.
+
+## NOTICE
+
+This work is licensed under the [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
+
+- SPDX-License-Identifier: CC-BY-4.0
+- SPDX-FileCopyrightText: 2025 DRÄXLMAIER Group (represented by Lisa Dräxlmaier GmbH)
+- SPDX-FileCopyrightText: 2025 Contributors to the Eclipse Foundation
+- Source URL: https://github.com/eclipse-tractusx/industry-core-hub
