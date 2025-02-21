@@ -1,3 +1,5 @@
+## Industry Core Hub Frontend
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -13,7 +15,6 @@ If you are developing a production application, we recommend updating the config
 
 - Configure the top-level `parserOptions` property like this:
 
-```js
 export default tseslint.config({
   languageOptions: {
     // other options...
@@ -48,3 +49,9 @@ export default tseslint.config({
   },
 })
 ```
+
+
+## UX & UI Draft
+
+![ui-draft](./docs/media/ux-ui-design.svg)
+
