@@ -20,66 +20,242 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
+import React from "react";
 import { useParams } from "react-router-dom";
 import carPartsData from "../data/sample-data.json";
-import { DropdownMenu, StatusTag, Button, Icon, Typography } from '@catena-x/portal-shared-components';
+import { DropdownMenu, StatusTag, Button, Icon, Typography, PageNotifications } from '@catena-x/portal-shared-components';
 
-interface CarPart {
-    uuid: string;
-    PartInstanceID: string;
-    Name: string;
-    Status: string;
-    SingleLevelBom: string;
-    Manufacturer: string;
-    Material: string;
-    WeightKg: number;
-    Category: string;
-    Description: string;
-    Image: string;
-  }
+import JsonViewerDialog from "./JsonViewerDialog";
+
 
 function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const part = carPartsData.find((part) => part.uuid === id);
 
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
+  const [notification, setNotification] = React.useState<{ open: boolean; severity: "success" | "error"; title: string } | null>(null);
+
   if (!part) {
     return <div>Product not found</div>;
   }
 
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(part.uuid)
+      .then(() => {
+        setNotification({
+          open: true,
+          severity: "success",
+          title: "PartInstanceID copied to clipboard",
+        });
+        setTimeout(() => setNotification(null), 15500); // Cierra la notificación después de 3 segundos
+      })
+      .catch((error) => {
+        setNotification({
+          open: true,
+          severity: "error",
+          title: "Failed to copy PartInstanceID",
+        });
+        setTimeout(() => setNotification(null), 15500); // Cierra la notificación después de 3 segundos
+        console.error("Failed to copy text: ", error);
+      });
+  };
+
+  const handleDownload = () => {
+    const fileName = part.Name.toLowerCase().replace(/\s+/g, "-") + ".txt";
+    const blob = new Blob([part.uuid], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: part.Name,
+          text: `Check out this part: ${part.Name} (UUID: ${part.uuid})`,
+          url: window.location.href
+        });
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      console.log("Web Share API not supported.");
+    }
+  };
+  
+
+  const getStatusTag = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "registered":
+        return <StatusTag color="confirmed" label="Registered" variant="filled" />;
+      case "draft":
+        return <StatusTag color="declined" label="Draft" variant="filled" />;
+      case "pending":
+        return <StatusTag color="pending" label="Pending" variant="filled" />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div>
-        <Typography variant="h1" className="rolesAddedHeading">{part.Name}</Typography>
-        <StatusTag color="confirmed" label="Registered" variant="filled" />
-        <StatusTag color="declined" label="Draft" variant="filled" />
-        <StatusTag color="pending" label="Pending" variant="filled" />
-        <DropdownMenu buttonText="Share">
-            <Button color="secondary" size="small" onClick={() => console.log("Copy unique ID")}>
-            <Icon fontSize="16" iconName="ContentCopy" /> 
-                Copy unique ID
-            </Button>
-            <Button color="secondary" size="small" onClick={() => console.log("Download")}>
-                <Icon fontSize="16" iconName="FileDownload" /> 
-                Download
-            </Button>
-            <Button color="secondary" size="small" onClick={() => console.log("Share with partner")}>
-                <Icon fontSize="16" iconName="IosShare" /> 
-            Share with partner
-            </Button>
-        </DropdownMenu>
-        <p><strong>Part Instance ID:</strong> {part.PartInstanceID}</p>
-        <p><strong>Manufacturer:</strong> {part.Manufacturer}</p>
-        <p><strong>Status:</strong> {part.Status}</p>
-        <p><strong>Material:</strong> {part.Material}</p>
-        <p><strong>Category:</strong> {part.Category}</p>
-        <p><strong>Weight:</strong> {part.WeightKg} kg</p>
-        <p><strong>Single Level Bom:</strong> {part.SingleLevelBom} kg</p>
-        <p><strong>Description:</strong> {part.Description} kg</p>
-        <img src={part.Image} alt={part.Name} />
-        
-        <Button color="success" size="large" onClick={() => console.log("Add button")}>
-                <Icon fontSize="16" iconName="Add" /> 
-            Share with partner
+    <div className="productDetail">
+      {notification && (
+      <div style={{ maxWidth: '300px', marginLeft: 'auto' }}>
+        <PageNotifications open severity="success" showIcon title="Copy successful"/>
+      </div>
+      )}
+      <div className="flex flex-content-between mx-3">
+        {getStatusTag(part.Status)}
+        <Button size="small" 
+                onClick={() => console.log("DCM v2.0 button")}
+                style={{backgroundColor: "purple",
+                        height: "32px",
+                        boxSizing: "border-box",
+                        borderRadius: "6px",
+                        fontSize: "0.8125rem"}}>
+            <Icon fontSize="16" iconName="Edit" />
+            Edit
         </Button>
+      </div>
+      <div className="grid-70-30" style={{marginBottom: "7%"}}>
+        <div>
+          <div className="my-5 flex flex-content-between px-3">
+            <div className="title-subtitle">
+              <Typography variant="h2">{part.Name}</Typography>
+              <Typography variant="caption1">{part.Category}</Typography>
+            </div>
+            <DropdownMenu
+              buttonSx={{
+                'padding': '10px 10px',
+                'border': '1px solid #b4b4b4!important',
+                'font-size': '14px',
+              }}
+              buttonText="Share"
+            >
+              <div className="flex flex-column">
+                <Button color="secondary" size="small" onClick={handleCopy} className="share-dropdown-btn">
+                    <Icon fontSize="16" iconName="ContentCopy" /> 
+                    Copy unique ID
+                </Button>
+                <Button color="secondary" size="small" onClick={handleDownload} className="share-dropdown-btn">
+                    <Icon fontSize="16" iconName="FileDownload" /> 
+                    Download
+                </Button>
+                <Button color="secondary" size="small" onClick={handleShare} className="share-dropdown-btn">
+                    <Icon fontSize="16" iconName="IosShare" /> 
+                Share with partner
+                </Button>
+                </div>
+            </DropdownMenu>
+          </div>
+
+          <div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>🔢 Part Instance ID:</Typography>
+              <Typography variant="body2">{part.PartInstanceID}</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>🏭 Manufacturer:</Typography>
+              <Typography variant="body2">{part.Manufacturer}</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>📌 Status:</Typography>
+              <Typography variant="body2">{part.Status}</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>🔩 Material:</Typography>
+              <Typography variant="body2">{part.Material}</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>📂 Category:</Typography>
+              <Typography variant="body2">{part.Category}</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>⚖️ Weight:</Typography>
+              <Typography variant="body2">{part.WeightKg} kg</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>📊 Single Level Bom:</Typography>
+              <Typography variant="body2">{part.SingleLevelBom} kg</Typography>
+            </div>
+            <div className="flex mb-1">
+              <Typography variant="label2" style={{marginRight: "5px"}}>📝 Description:</Typography>
+              <Typography variant="body2">{part.Description} kg</Typography>
+            </div>
+          </div>
+        </div>
+        <div className="my-auto">
+          <img src={part.Image} alt={part.Name} className="img-fluid my-auto"/>
+          <div className="mt-3">
+            <ul>
+              <li className="flex">
+                <Icon fontSize="16" iconName="Polyline" className="my-auto mr-1"/>
+                <Typography variant="label2" style={{marginRight: "5px"}}>Relationship 1:</Typography>
+                <Typography variant="body2">PI-702</Typography>
+              </li>
+              <li className="flex">
+                <Icon fontSize="16" iconName="Polyline" className="my-auto mr-1"/>
+                <Typography variant="label2" style={{marginRight: "5px"}}>Relationship 2:</Typography>
+                <Typography variant="body2">PI-244</Typography>
+              </li>
+              <li className="flex">
+                <Icon fontSize="16" iconName="Polyline" className="my-auto mr-1"/>
+                <Typography variant="label2" style={{marginRight: "5px"}}>Relationship 3:</Typography>
+                <Typography variant="body2">PI-089</Typography>
+              </li>
+              <li className="flex">
+                <Icon fontSize="16" iconName="Polyline" className="my-auto mr-1"/>
+                <Typography variant="label2" style={{marginRight: "5px"}}>Relationship 4:</Typography>
+                <Typography variant="body2">PI-011</Typography>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex m-5">
+        <Button color="success" size="large" onClick={() => console.log("Add button")} fullWidth={true} style={{padding: "5px"}}>
+            <Icon fontSize="18" iconName="Add" />
+        </Button>
+      </div>
+
+      <div className="flex m-5 flex-content-between flex-gap-5">
+        <Button color="primary" size="large" onClick={() => console.log("PCF v3.0 button")} fullWidth={true} style={{padding: "10px"}}>
+            <Icon fontSize="16" iconName="Add" />
+            PCF v3.0
+        </Button>
+        <Button color="primary" size="large" onClick={() => console.log("DPP v2.0 button")} fullWidth={true} style={{padding: "10px"}}>
+            <Icon fontSize="16" iconName="Add" />
+            DPP v2.0
+        </Button>
+        <Button color="primary" size="large" onClick={handleOpenDialog} fullWidth={true} style={{padding: "10px"}}>
+            <Icon fontSize="16" iconName="Add" />
+            DCM v2.0
+        </Button>
+      </div>
+      <div className="flex m-5">
+        <Button color="error" size="large" onClick={() => console.log("Transmission Passport v5.0")} fullWidth={true} style={{padding: "10px"}}>
+            <Icon fontSize="16" iconName="Add" />
+            Transmission Passport v5.0
+        </Button>
+      </div>
+
+      <JsonViewerDialog open={dialogOpen} onClose={handleCloseDialog} carJsonData={part}/>
     </div>
   );
 }

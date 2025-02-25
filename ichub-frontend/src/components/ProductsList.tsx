@@ -24,20 +24,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import carPartsData from "../data/sample-data.json";
 import { Cards } from '@catena-x/portal-shared-components';
-
-interface CarPart {
-  uuid: string;
-  PartInstanceID: string;
-  Name: string;
-  Status: string;
-  SingleLevelBom: string;
-  Manufacturer: string;
-  Material: string;
-  WeightKg: number;
-  Category: string;
-  Description: string;
-  Image: string;
-}
+import { CarPart } from "../models/CarPart";
 
 function ProductsList() {
     const [carParts, setCarParts] = useState<CarPart[]>([]);
@@ -64,6 +51,7 @@ function ProductsList() {
             src: part.Image
           },
           onButtonClick: () => handleButtonClick(part),
+          boxClickable: true
         }))}
         variant="expanded"
       />
