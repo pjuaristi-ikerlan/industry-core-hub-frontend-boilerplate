@@ -20,6 +20,7 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
+import { useState } from 'react';
 import { Button, Dialog, DialogHeader, DialogContent, Icon } from '@catena-x/portal-shared-components';
 
 import { CarPart } from '../models/CarPart';
@@ -31,13 +32,32 @@ interface JsonViewerDialogProps {
   }
 
 const JsonViewerDialog = ({ open, onClose, carJsonData }: JsonViewerDialogProps) => {
+    const [copied, setCopied] = useState(false);
     const title = carJsonData?.Name ? `${carJsonData.Name} JSON data` : "DCM JSON Data";
     const description = carJsonData?.Description ? `${carJsonData.Description}` : "";
+
+    const handleCopy = () => {
+        var json_string = JSON.stringify(carJsonData, null, 2);
+        navigator.clipboard.writeText(json_string)
+          .then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          })
+          .catch((error) => {
+            console.error("Failed to copy text: ", error);
+          });
+      };
 
     return (
         <Dialog open={open} maxWidth="xl">
             <DialogHeader intro={description} title={title} />
             <DialogContent>
+                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '10px', borderRadius: '5px', textAlign: 'right' }}>
+                    <span className='mr-3'>{copied ? "JSON copied ✅" : ""}</span>
+                    <Button variant="text" onClick={handleCopy} size='small'>
+                        <Icon fontSize="16" iconName="ContentCopy" />
+                    </Button>
+                </pre>
                 <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
                     {JSON.stringify(carJsonData, null, 2)}
                 </pre>
