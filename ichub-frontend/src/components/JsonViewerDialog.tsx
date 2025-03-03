@@ -21,7 +21,6 @@
 ********************************************************************************/
 
 import { Button, Dialog, DialogHeader, DialogContent, Icon } from '@catena-x/portal-shared-components';
-import ReactJson from "react-json-view";
 
 import { CarPart } from '../models/CarPart';
 
@@ -39,7 +38,9 @@ const JsonViewerDialog = ({ open, onClose, carJsonData }: JsonViewerDialogProps)
         <Dialog open={open} maxWidth="xl">
             <DialogHeader intro={description} title={title} />
             <DialogContent>
-                <ReactJson src={carJsonData} theme="rjv-default" collapsed={false} />
+                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+                    {JSON.stringify(carJsonData, null, 2)}
+                </pre>
             </DialogContent>
             <div className="mx-auto my-4 text-center">
                 <Button variant="outlined" onClick={onClose} size='small'>
