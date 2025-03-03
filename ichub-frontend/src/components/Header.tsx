@@ -46,7 +46,7 @@ const Header = () => {
     >
       <a href="/">
         <img
-          src="https://eclipse-tractusx.github.io/portal-shared-components/assets/cx-logo-text-DoATHErk.svg"
+          src="/catena-x-white.svg"
           alt="Logo"
           style={{
             display: 'inline-block',
@@ -62,7 +62,7 @@ const Header = () => {
             marginRight: '16px',
           }}
         >
-          Help
+          Start
         </Button>
       </div>
     </MainNavigation>

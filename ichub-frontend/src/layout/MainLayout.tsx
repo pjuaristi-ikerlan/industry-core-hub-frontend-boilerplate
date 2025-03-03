@@ -30,7 +30,7 @@ function MainLayout() {
     <main>
       <Header />
       <div className="pageWrapper d-lg-flex">
-        <aside className="sidebarArea shadow bg-white" id="sidebarArea">
+        <aside className="sidebarArea shadow" id="sidebarArea">
           <Sidebar />
         </aside>
         <div className="contentArea">

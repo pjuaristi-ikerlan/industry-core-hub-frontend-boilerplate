@@ -25,6 +25,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --brand-dark: #343a40;
+  --brand-dark-2: #4f4d4c;
+  --brand-orange: #e38615;
+  --brand-text: #f8f9fa;
+}
+
+/****** Colors ******/
+.bg-brand-dark {
+  background-color: var(--brand-dark);
+}
+.bg-brand-dark-2 {
+  background-color: var(--brand-dark-2);
 }
 
 /****** General Styling ******/
@@ -153,7 +165,6 @@
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-
 /* Wrapper for sidebar and content area */
 .pageWrapper {
   display: flex;
@@ -164,7 +175,7 @@
 .sidebarArea {
   width: 250px;
   padding: 20px;
-  background-color: #f4f4f4;
+  background: linear-gradient(to bottom, var(--brand-orange), var(--brand-dark) 35%);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -172,6 +183,7 @@
 .contentArea {
   flex-grow: 1;
   padding: 20px;
+  background: radial-gradient(circle, var(--brand-dark-2), var(--brand-dark)) !important;
 }
 
 /* Mobile responsiveness: stack layout vertically */
@@ -183,6 +195,7 @@
   .sidebarArea {
     width: 100%;
     box-shadow: none;
+    background: linear-gradient(to bottom, var(--brand-orange), var(--brand-dark));
   }
 }
 
@@ -192,6 +205,25 @@
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+  background: linear-gradient(to bottom, var(--brand-orange), #666666);
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px 40px var(--brand-dark-2);
+}
+
+.cx-card__instance {
+  margin-bottom: 94px!important;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(52,58,64,1) 0%, rgba(227,134,21,1) 100%) !important;
+}
+.cx-card__content--buttons button {
+  background-color: var(--brand-dark);
+  text-align: center;
+  margin: 0 auto;
+}
+.card .cx-card__content span, .productDetail .title-subtitle span {
+  color: var(--brand-text)!important;
 }
 
 .grid-70-30{
@@ -206,4 +238,35 @@
 }
 .share-dropdown-btn {
   margin: 5px 0!important;
+}
+
+.cx-main-navigation__wrapper {
+  background: linear-gradient(to left, var(--brand-orange), var(--brand-dark) 30%) !important;
+  border-bottom: 2px solid white;
+}
+
+.cx-navigation-item a {
+  color: var(--brand-text);
+}
+
+.cx-navigation-item a:hover {
+  color: var(--brand-orange);
+  font-weight: bold;
+}
+
+.cx-main-navigation__children-bottom button {
+  background-color: var(--brand-dark);
+  color: var(--brand-text);
+  border: 1px solid white;
+}
+.cx-main-navigation__children-bottom button:hover {
+  color: var(--brand-orange);
+  font-weight: bold;
+  background-color: var(--brand-text);
+  border: 2px solid var(--brand-dark);
+}
+
+.cx-menu a:hover {
+  color: var(--brand-dark-2);
+  font-weight: bold;
 }
