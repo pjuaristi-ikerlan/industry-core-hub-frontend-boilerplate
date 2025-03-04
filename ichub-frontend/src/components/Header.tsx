@@ -46,7 +46,7 @@ const Header = () => {
     >
       <a href="/">
         <img
-          src="/catena-x-white.svg"
+          src="/eclipse-tractus-x-logo.png"
           alt="Logo"
           style={{
             display: 'inline-block',
