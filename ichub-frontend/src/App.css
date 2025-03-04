@@ -192,7 +192,7 @@
 .contentArea {
   flex-grow: 1;
   padding: 20px;
-  background-color: var(--brand-dark)!important;
+  background-image: url('/main-bg-new.png') !important;
 }
 
 /* Mobile responsiveness: stack layout vertically */
@@ -213,9 +213,21 @@
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(to bottom, var(--brand-orange), #666666);
-  border-radius: 20px;
-  box-shadow: 0px 0px 50px 40px var(--brand-dark);
+}
+
+.productDetail, .card {
+  background: #1e1e1e !important;
+  border-radius: unset!important;
+  border: none!important;
+  box-shadow: 0 0 10px var(--brand-shadow);
+}
+
+.card *, 
+.productDetail  * {
+  color: var(--brand-text)!important;
+}
+.productDetail .MuiChip-root span{
+  color: var(--brand-dark)!important;
 }
 
 .productDetail .cx-dropdown-menu button {
@@ -236,12 +248,15 @@
 
 div[role="presentation"] > div.MuiPaper-root.MuiPopover-paper.MuiMenu-paper {
   background-color: var(--brand-dark);
+  box-shadow: 0 0 10px var(--brand-shadow)
 }
 
 div[role="presentation"] > div.MuiPaper-root.MuiPopover-paper.MuiMenu-paper button {
   background-color: var(--brand-orange);
   color: var(--brand-dark);
   font-weight: 600;
+}
+div[role="presentation"] > div.MuiPaper-root.MuiPopover-paper.MuiMenu-paper button:hover {
   box-shadow: 0px 0px 5px 1px rgba(255,255,255,1);
 }
 
@@ -249,21 +264,8 @@ div[role="presentation"] > div.MuiPaper-root.MuiPopover-paper.MuiMenu-paper butt
 .cx-card__instance {
   margin-bottom: 94px!important;
 }
-
-.card {
-  background: #1e1e1e !important;
-  border-radius: unset!important;
-  border: none!important;
-  box-shadow: 0 0 10px var(--brand-shadow)
-}
 .card:hover {
   box-shadow: 0 0 15px var(--brand-orange)!important;
-}
-.card .cx-card__content span, 
-.card .cx-card__content p, 
-.card .cx-card__content h5, 
-.productDetail .title-subtitle span {
-  color: var(--brand-text)!important;
 }
 .cx-card__content--buttons button {
   background-color: var(--brand-dark);
