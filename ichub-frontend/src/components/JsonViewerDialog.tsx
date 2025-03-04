@@ -52,13 +52,13 @@ const JsonViewerDialog = ({ open, onClose, carJsonData }: JsonViewerDialogProps)
         <Dialog open={open} maxWidth="xl">
             <DialogHeader intro={description} title={title} />
             <DialogContent>
-                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '10px', borderRadius: '5px', textAlign: 'right' }}>
+                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '0 10px', borderRadius: '5px', textAlign: 'right' }}>
                     <span className='mr-3'>{copied ? "JSON copied ✅" : ""}</span>
                     <Button variant="text" onClick={handleCopy} size='small'>
                         <Icon fontSize="16" iconName="ContentCopy" />
                     </Button>
                 </pre>
-                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+                <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#f4f4f4', padding: '0 10px 5px 10px', borderRadius: '5px' }}>
                     {JSON.stringify(carJsonData, null, 2)}
                 </pre>
             </DialogContent>
