@@ -31,6 +31,9 @@
   --brand-secondary-text: #d3d3d3;
   --brand-shadow: #ffffff80;
 }
+body{
+  font-family: "Manrope", sans-serif;
+}
 
 /****** Colors ******/
 .bg-brand-dark {
