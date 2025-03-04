@@ -147,7 +147,7 @@ function ProductDetail() {
               }}
               buttonText="Share"
             >
-              <div className="flex flex-column">
+              <div className="flex flex-column dropdown-buttons">
                 <Button color="secondary" size="small" onClick={handleCopy} className="share-dropdown-btn">
                     <Icon fontSize="16" iconName="ContentCopy" /> 
                     Copy unique ID
