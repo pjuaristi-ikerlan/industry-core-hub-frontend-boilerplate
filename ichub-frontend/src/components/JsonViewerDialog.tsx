@@ -23,12 +23,12 @@
 import { Button, Dialog, DialogHeader, DialogContent, Icon } from '@catena-x/portal-shared-components';
 import ReactJson from "react-json-view";
 
-import { CarPart } from '../models/CarPart';
+import { PartInstance } from '../types/product';
 
 interface JsonViewerDialogProps {
     open: boolean;
     onClose: () => void;
-    carJsonData: CarPart;  // Use CarPart interface here
+    carJsonData: PartInstance;  // Use CarPart interface here
   }
 
 const JsonViewerDialog = ({ open, onClose, carJsonData }: JsonViewerDialogProps) => {

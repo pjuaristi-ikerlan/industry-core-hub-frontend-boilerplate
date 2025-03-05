@@ -20,15 +20,41 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
-import ProductsList from '../components/ProductsList'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import carPartsData from "../data/sample-data.json";
+import { CardDecision  } from '@catena-x/portal-shared-components';
+import { PartInstance } from "../types/product";
 
-const ProductsListPage = () => {
+const ProductsList = () => {
+  const [carParts, setCarParts] = useState<PartInstance[]>([]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setCarParts(carPartsData);
+  }, []);
+
+  const handleButtonClick = (part: PartInstance) => {
+    console.log(part);
+    navigate(`/product/${part.uuid}`);  // Navigate to the details page
+  };
+
+  
 
   return (
-    <>      
-      <ProductsList />
-    </>
-  )
+    <CardDecision 
+      onClick = {(item:any) =>handleButtonClick(item)}
+      items={carParts.map((part) => ({
+          appId: part.uuid,
+          provider: part.Provider,
+          name: part.Name,
+          status: part.Status,
+          statusText: part.Status
+        }))}
+        />
+     
+  );
 }
 
-export default ProductsListPage
+export default ProductsList

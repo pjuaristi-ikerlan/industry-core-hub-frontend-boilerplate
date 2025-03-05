@@ -20,7 +20,7 @@
  * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
 
-export interface CarPart {
+export interface PartInstance {
     uuid: string;
     PartInstanceID: string;
     Name: string;
@@ -32,4 +32,5 @@ export interface CarPart {
     Category: string;
     Description: string;
     Image: string;
+    Provider:string
 }
